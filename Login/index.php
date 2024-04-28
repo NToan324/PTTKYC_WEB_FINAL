@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Login</title>
 </head>
+
 <body>
     <div class="background">
-        <img src="/storage/Image/bg-login.png" alt="background">
+        <img src="/PTTKYC_WEB_FINAL/storage/Image/bg-login.png" alt="background">
     </div>
     <div class="container-login" id="container-login">
         <div class="container-login-form">
             <div class="header-login">
-                <img src="/storage/Image/logo.png" alt="logo">
+                <img src="/PTTKYC_WEB_FINAL/storage/Image/logo.png" alt="logo">
                 <span>Japan House</span>
             </div>
-            <form action="#" method="post" class="form-login">
+            <form action="/PTTKYC_WEB_FINAL/php/login.php" method="post" class="form-login">
                 <h1>Đăng Nhập</h1>
-                <input type="email" name="email" placeholder="Email" id="email">
+                <input type="email" name="email_login" placeholder="Email" id="email">
                 <p id="errorMessageEmail" class="errorMessage"></p>
                 <div class="password-input">
-                    <input type="password" name="psw" placeholder="Mật khẩu" id="psw">
+                    <input type="password" name="password_login" placeholder="Mật khẩu" id="psw">
                     <!-- <i class="fa-solid fa-eye"></i> -->
                     <i class="fa-solid fa-eye-slash" id="eye-password-login"></i>
                 </div>
@@ -35,7 +36,7 @@
                     </div>
                     <a href="#">Quên mật khẩu</a>
                 </div>
-                <button type="submit" class="btn-login" id="btn-login">Đăng nhập</button>
+                <button class="btn-login" id="btn-login">Đăng nhập</button>
                 <div class="signup">
                     <span>Bạn mới biết đến chúng tôi?</span>
                     <a href="#" id="signup">Đăng ký</a>
@@ -46,27 +47,28 @@
     <div class="container-signup" id="container-signup">
         <div class="container-signup-form">
             <div class="header-signup">
-                <img src="/storage/Image/logo.png" alt="logo">
+                <img src="/PTTKYC_WEB_FINAL/storage/Image/logo.png" alt="logo">
                 <span>Japan House</span>
             </div>
-            <form action="" method="post" class="form-signup">
+            <form action="/PTTKYC_WEB_FINAL/php/signup.php" method="post" class="form-signup">
                 <h1>Đăng Ký</h1>
-                <input type="text" name="name" placeholder="Họ và tên" id="name-signup">
+                <input type="text" name="name_signup" placeholder="Họ và tên" id="name-signup">
                 <p id="errorMessageNameSignup" class="errorMessage"></p>
-                <input type="email" name="email" placeholder="Email" id="email-signup">
+                <input type="email" name="email_signup" placeholder="Email" id="email-signup">
                 <p id="errorMessageEmailSignup" class="errorMessage"></p>
                 <div class="password-input">
-                    <input type="password" name="psw" placeholder="Mật khẩu" id="psw-signup">
+                    <input type="password" name="password_signup" placeholder="Mật khẩu" id="psw-signup">
                     <!-- <i class="fa-solid fa-eye"></i> -->
                     <i class="fa-solid fa-eye-slash" id="eye-password-signup"></i>
                 </div>
                 <p id="errorMessagePasswordSignup" class="errorMessage"></p>
-                <input type="password" name="psw" placeholder="Nhập lại mật khẩu" id="psw-cf-signup">
+                <input type="password" name="password_confirm_signup" placeholder="Nhập lại mật khẩu"
+                    id="psw-cf-signup">
                 <p id="errorMessagePasswordConfirm" class="errorMessage"></p>
-                <button type="submit" class="btn-signup" id="btn-signup">Đăng ký</button>
+                <button class="btn-signup" id="btn-signup">Đăng ký</button>
                 <div class="term-policy">
-                    <p>Bằng việc đăng kí, bạn đã đồng ý với Japan House về <br> 
-                        <a href="#">Điều khoản dịch vụ</a> & 
+                    <p>Bằng việc đăng kí, bạn đã đồng ý với Japan House về <br>
+                        <a href="#">Điều khoản dịch vụ</a> &
                         <a href="#">Chính sách bảo mật</a>
                     </p>
                 </div>
@@ -79,4 +81,5 @@
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -70,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         errorMessage('errorMessagePassword', 'Mật khẩu phải có ít nhất 6 ký tự');
                     } else {
                         errorMessage('errorMessagePassword', '');
-                        alert('Đăng nhập thành công');
                     }
                 } else {
                     e.preventDefault();
@@ -85,10 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 errorMessage('errorMessagePassword', '');
             }
-        } else {
-        alert('Đăng nhập thành công');
         }
-
     });
 
     //Check email and password for register
@@ -141,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                     errorMessage('errorMessagePasswordConfirm', 'Mật khẩu xác nhận không khớp');
                                 } else {
                                     errorMessage('errorMessagePasswordConfirm', '');
-                                    alert('Đăng ký thành công');
                                 }
                             }
                         }
@@ -178,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function () {
                                 errorMessage('errorMessagePasswordConfirm', 'Mật khẩu xác nhận không khớp');
                             } else {
                                 errorMessage('errorMessagePasswordConfirm', '');
-                                alert('Đăng ký thành công');
                             }
                         }
                     }
@@ -204,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         errorMessage('errorMessagePasswordConfirm', 'Mật khẩu xác nhận không khớp');
                     } else {
                         errorMessage('errorMessagePasswordConfirm', '');
-                        alert('Đăng ký thành công');
                     }
                 }
             }
@@ -218,14 +211,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 errorMessage('errorMessagePasswordConfirm', 'Mật khẩu xác nhận không khớp');
             } else {
                 errorMessage('errorMessagePasswordConfirm', '');
-                alert('Đăng ký thành công');
             }
-        } else {
-            alert('Đăng ký thành công');
         }
-        
     });
-
 });
 
 // Function to toggle password visibility
@@ -273,6 +261,6 @@ function errorMessage(id, message) {
     iderror.innerHTML = message;
     iderror.style.fontSize = '0.8rem';
     iderror.style.color = 'red';
-    iderror.style.margin = '-17px 0 20px 0';
+    iderror.style.margin = '-17px 0 15px 0';
     iderror.style.width = '312px';
 }
