@@ -18,6 +18,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 window.location.href = '/PTTKYC_WEB_FINAL/Login/index.php';
                 </script>";
             }  
+        } else {
+            echo "<script type='text/javascript'>alert('Email không tồn tại!');
+            window.location.href = '/PTTKYC_WEB_FINAL/Login/index.php';
+            </script>";
         }
     }
 }
