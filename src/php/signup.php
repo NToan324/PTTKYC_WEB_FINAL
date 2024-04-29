@@ -13,11 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         window.location.href = '/PTTKYC_WEB_FINAL/src/views/Login/index.php';
         </script>";
     } else {
-        // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
         // Thêm người dùng mới vào cơ sở dữ liệu
-        $query = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashed_password')";
+        $query = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
         if (mysqli_query($conn, $query)) {
             echo "<script type='text/javascript'>
                     alert('Đăng ký thành công!');

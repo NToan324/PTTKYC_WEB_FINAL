@@ -25,15 +25,15 @@ function checkUser1($name, $email) {
     $rowCount = $result->num_rows;
     return $rowCount > 0;
 }   
-function checkUser2($email) {        
+function checkUser2($email) {   
     $mail = new PHPMailer(); 
     $conn = get_connection();
     $email = mysqli_real_escape_string($conn, $email);
-    $check_email = "SELECT * FROM users WHERE email='$email'";
+    $check_email = "SELECT * FROM users WHERE email='$email' limit 1";
     $run_sql = mysqli_query($conn, $check_email);
     if(mysqli_num_rows($run_sql) > 0){
         $code = rand(9999, 1111);
-        $insert_code = "UPDATE users SET code = $code WHERE email = '$email'";
+        $insert_code = "UPDATE users SET code = $code WHERE email = '$email' limit 1";
         $run_query =  mysqli_query($conn, $insert_code);
         if($run_query){
             $mail->SMTPDebug = 0;  
