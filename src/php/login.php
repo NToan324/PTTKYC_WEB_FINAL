@@ -11,16 +11,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if($result && mysqli_num_rows($result) > 0) {
             $user_data = mysqli_fetch_assoc($result);
             if(password_verify($password, $user_data['password'])) {
-                header("location:/PTTKYC_WEB_FINAL/Home/index.php");
+                header("location:/PTTKYC_WEB_FINAL/src/views/Home/index.php");
                 exit;
             } else {
                 echo "<script type='text/javascript'>alert('Sai mật khẩu!');
-                window.location.href = '/PTTKYC_WEB_FINAL/Login/index.php';
+                window.location.href = '/PTTKYC_WEB_FINAL/src/views/Login/index.php';
                 </script>";
             }  
         } else {
             echo "<script type='text/javascript'>alert('Email không tồn tại!');
-            window.location.href = '/PTTKYC_WEB_FINAL/Login/index.php';
+            window.location.href = '/PTTKYC_WEB_FINAL/src/views/Login/index.php';
             </script>";
         }
     }

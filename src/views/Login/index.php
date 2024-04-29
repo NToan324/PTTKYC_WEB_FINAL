@@ -19,7 +19,7 @@
                 <img src="/PTTKYC_WEB_FINAL/storage/Image/logo.png" alt="logo">
                 <span>Japan House</span>
             </div>
-            <form action="/PTTKYC_WEB_FINAL/php/login.php" method="post" class="form-login">
+            <form action="/PTTKYC_WEB_FINAL/src/php/login.php" method="post" class="form-login">
                 <h1>Đăng Nhập</h1>
                 <input type="email" name="email_login" placeholder="Email" id="email">
                 <p id="errorMessageEmail" class="errorMessage"></p>
@@ -34,7 +34,7 @@
                         <input type="checkbox" id="remember-me">
                         <label for="rememberme">Lưu mật khẩu</label>
                     </div>
-                    <a href="#">Quên mật khẩu</a>
+                    <a href="/PTTKYC_WEB_FINAL/src/views/ResetPassword/forgotten-pass.php">Quên mật khẩu</a>
                 </div>
                 <button class="btn-login" id="btn-login">Đăng nhập</button>
                 <div class="signup">
@@ -50,7 +50,7 @@
                 <img src="/PTTKYC_WEB_FINAL/storage/Image/logo.png" alt="logo">
                 <span>Japan House</span>
             </div>
-            <form action="/PTTKYC_WEB_FINAL/php/signup.php" method="post" class="form-signup">
+            <form action="/PTTKYC_WEB_FINAL/src/php/signup.php" method="post" class="form-signup">
                 <h1>Đăng Ký</h1>
                 <input type="text" name="name_signup" placeholder="Họ và tên" id="name-signup">
                 <p id="errorMessageNameSignup" class="errorMessage"></p>
