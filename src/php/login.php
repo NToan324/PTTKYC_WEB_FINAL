@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if($result && mysqli_num_rows($result) > 0) {
             $user_data = mysqli_fetch_assoc($result);
-            if($password) {
+            if($password == $user_data['password']) {
                 header("location:/PTTKYC_WEB_FINAL/src/views/Home/index.php");
                 exit;
             } else {
