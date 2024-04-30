@@ -53,19 +53,19 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             errorMessage('errorMessageEmail', 'Vui lòng nhập email');
             errorMessage('errorMessagePassword', 'Vui lòng nhập mật khẩu');
-        } else if(email.value === '') { 
+        } else if (email.value === '') {
             e.preventDefault();
             errorMessage('errorMessageEmail', 'Vui lòng nhập email');
             email.focus();
         }
         else if (email.value !== '') {
-            if(validateEmail(email.value) == false){
+            if (validateEmail(email.value) == false) {
                 e.preventDefault();
                 errorMessage('errorMessageEmail', 'Email không hợp lệ');
             } else {
                 errorMessage('errorMessageEmail', '');
-                if(password.value !== '') {
-                    if(password.value.length < 6){
+                if (password.value !== '') {
+                    if (password.value.length < 6) {
                         e.preventDefault();
                         errorMessage('errorMessagePassword', 'Mật khẩu phải có ít nhất 6 ký tự');
                     } else {
@@ -77,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     password.focus();
                 }
             }
-        } else if(password.value !== '') {
-            if(password.value.length < 6){
+        } else if (password.value !== '') {
+            if (password.value.length < 6) {
                 e.preventDefault();
                 errorMessage('errorMessagePassword', 'Mật khẩu phải có ít nhất 6 ký tự');
             } else {
@@ -88,12 +88,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     //Check email and password for register
-    btnSignup.addEventListener('click', function (e) {  
+    btnSignup.addEventListener('click', function (e) {
         const nameSignup = document.getElementById('name-signup');
         const emailSignup = document.getElementById('email-signup');
         const passwordSignup = document.getElementById('psw-signup');
         const passwordConfirmSignup = document.getElementById('psw-cf-signup');
-        if(nameSignup.value === '' && emailSignup.value === '' && passwordSignup.value === '' && passwordConfirmSignup.value === '') {
+        if (nameSignup.value === '' && emailSignup.value === '' && passwordSignup.value === '' && passwordConfirmSignup.value === '') {
             e.preventDefault();
             nameSignup.focus();
             errorMessage('errorMessageNameSignup', 'Vui lòng nhập tên');
@@ -101,38 +101,38 @@ document.addEventListener('DOMContentLoaded', function () {
             errorMessage('errorMessagePasswordSignup', 'Vui lòng nhập mật khẩu');
             errorMessage('errorMessagePasswordConfirm', 'Vui lòng xác nhận mật khẩu');
             return;
-        } else if(nameSignup.value === '') {
+        } else if (nameSignup.value === '') {
             e.preventDefault();
             errorMessage('errorMessageNameSignup', 'Vui lòng nhập tên');
             nameSignup.focus();
-        } else if(nameSignup.value !== '') {
+        } else if (nameSignup.value !== '') {
             errorMessage('errorMessageNameSignup', '');
-            if(emailSignup.value === '') {
+            if (emailSignup.value === '') {
                 e.preventDefault();
                 errorMessage('errorMessageEmailSignup', 'Vui lòng nhập email');
                 emailSignup.focus();
-            } else if(emailSignup.value !== '') {
-                if(validateEmail(emailSignup.value) == false){
+            } else if (emailSignup.value !== '') {
+                if (validateEmail(emailSignup.value) == false) {
                     e.preventDefault();
                     errorMessage('errorMessageEmailSignup', 'Email không hợp lệ');
                 } else {
                     errorMessage('errorMessageEmailSignup', '');
-                    if(passwordSignup.value === '') {
+                    if (passwordSignup.value === '') {
                         e.preventDefault();
                         errorMessage('errorMessagePasswordSignup', 'Vui lòng nhập mật khẩu');
                         passwordSignup.focus();
-                    } else if(passwordSignup.value !== '') {
-                        if(passwordSignup.value.length < 6){
+                    } else if (passwordSignup.value !== '') {
+                        if (passwordSignup.value.length < 6) {
                             e.preventDefault();
                             errorMessage('errorMessagePasswordSignup', 'Mật khẩu phải có ít nhất 6 ký tự');
                         } else {
                             errorMessage('errorMessagePasswordSignup', '');
-                            if(passwordConfirmSignup.value === '') {
+                            if (passwordConfirmSignup.value === '') {
                                 e.preventDefault();
                                 errorMessage('errorMessagePasswordConfirm', 'Vui lòng xác nhận mật khẩu');
                                 passwordConfirmSignup.focus();
-                            } else if(passwordConfirmSignup.value !== '') {
-                                if(passwordConfirmSignup.value !== passwordSignup.value){
+                            } else if (passwordConfirmSignup.value !== '') {
+                                if (passwordConfirmSignup.value !== passwordSignup.value) {
                                     e.preventDefault();
                                     errorMessage('errorMessagePasswordConfirm', 'Mật khẩu xác nhận không khớp');
                                 } else {
@@ -143,32 +143,32 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             }
-        } else if(emailSignup.value === '') {
+        } else if (emailSignup.value === '') {
             e.preventDefault();
             errorMessage('errorMessageEmailSignup', 'Vui lòng nhập email');
             emailSignup.focus();
-        } else if(emailSignup.value !== '') {
-            if(validateEmail(emailSignup.value) == false){
+        } else if (emailSignup.value !== '') {
+            if (validateEmail(emailSignup.value) == false) {
                 e.preventDefault();
                 errorMessage('errorMessageEmailSignup', 'Email không hợp lệ');
             } else {
                 errorMessage('errorMessageEmailSignup', '');
-                if(passwordSignup.value === '') {
+                if (passwordSignup.value === '') {
                     e.preventDefault();
                     errorMessage('errorMessagePasswordSignup', 'Vui lòng nhập mật khẩu');
                     passwordSignup.focus();
-                } else if(passwordSignup.value !== '') {
-                    if(passwordSignup.value.length < 6){
+                } else if (passwordSignup.value !== '') {
+                    if (passwordSignup.value.length < 6) {
                         e.preventDefault();
                         errorMessage('errorMessagePasswordSignup', 'Mật khẩu phải có ít nhất 6 ký tự');
                     } else {
                         errorMessage('errorMessagePasswordSignup', '');
-                        if(passwordConfirmSignup.value === '') {
+                        if (passwordConfirmSignup.value === '') {
                             e.preventDefault();
                             errorMessage('errorMessagePasswordConfirm', 'Vui lòng xác nhận mật khẩu');
                             passwordConfirmSignup.focus();
-                        } else if(passwordConfirmSignup.value !== '') {
-                            if(passwordConfirmSignup.value !== passwordSignup.value){
+                        } else if (passwordConfirmSignup.value !== '') {
+                            if (passwordConfirmSignup.value !== passwordSignup.value) {
                                 e.preventDefault();
                                 errorMessage('errorMessagePasswordConfirm', 'Mật khẩu xác nhận không khớp');
                             } else {
@@ -178,22 +178,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             }
-        } else if(passwordSignup.value === '') {
+        } else if (passwordSignup.value === '') {
             e.preventDefault();
             errorMessage('errorMessagePasswordSignup', 'Vui lòng nhập mật khẩu');
             passwordSignup.focus();
-        } else if(passwordSignup.value !== '') {
-            if(passwordSignup.value.length < 6){
+        } else if (passwordSignup.value !== '') {
+            if (passwordSignup.value.length < 6) {
                 e.preventDefault();
                 errorMessage('errorMessagePasswordSignup', 'Mật khẩu phải có ít nhất 6 ký tự');
             } else {
                 errorMessage('errorMessagePasswordSignup', '');
-                if(passwordConfirmSignup.value === '') {
+                if (passwordConfirmSignup.value === '') {
                     e.preventDefault();
                     errorMessage('errorMessagePasswordConfirm', 'Vui lòng xác nhận mật khẩu');
                     passwordConfirmSignup.focus();
-                } else if(passwordConfirmSignup.value !== '') {
-                    if(passwordConfirmSignup.value !== passwordSignup.value){
+                } else if (passwordConfirmSignup.value !== '') {
+                    if (passwordConfirmSignup.value !== passwordSignup.value) {
                         e.preventDefault();
                         errorMessage('errorMessagePasswordConfirm', 'Mật khẩu xác nhận không khớp');
                     } else {
@@ -201,12 +201,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             }
-        } else if(passwordConfirmSignup.value === '') {
+        } else if (passwordConfirmSignup.value === '') {
             e.preventDefault();
             errorMessage('errorMessagePasswordConfirm', 'Vui lòng xác nhận mật khẩu');
             passwordConfirmSignup.focus();
-        } else if(passwordConfirmSignup.value !== '') {
-            if(passwordConfirmSignup.value !== passwordSignup.value){
+        } else if (passwordConfirmSignup.value !== '') {
+            if (passwordConfirmSignup.value !== passwordSignup.value) {
                 e.preventDefault();
                 errorMessage('errorMessagePasswordConfirm', 'Mật khẩu xác nhận không khớp');
             } else {
@@ -251,7 +251,7 @@ function validateEmail(email) {
     const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
     if (emailRegex.test(email)) {
         return true;
-    } else {    
+    } else {
         return false;
     }
 }

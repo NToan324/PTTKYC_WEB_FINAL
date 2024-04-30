@@ -7,10 +7,10 @@ require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/Exception.php';
 require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/PHPMailer.php';
 require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/SMTP.php';
 
-function checkUser($name, $pass) {
+function checkUser($email, $pass) {
     $conn = get_connection();
-    $stmt = $conn->prepare("SELECT * FROM users WHERE name = ? AND password = ?");
-    $stmt->bind_param("ss", $name, $pass);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+    $stmt->bind_param("ss", $email, $pass);
     $stmt->execute();
     $result = $stmt->get_result();
     $rowCount = $result->num_rows;
@@ -41,8 +41,8 @@ function checkUser2($email) {
             $mail->isSMTP();                          
             $mail->Host = 'smtp.gmail.com';            
             $mail->SMTPAuth = true;                     
-            $mail->Username = '52200155@student.tdtu.edu.vn';                 
-            $mail->Password = 'eags pwty jjij hsuq';       
+            $mail->Username = 'lehan14102004@gmail.com';                 
+            $mail->Password = 'ilos jzpv eqxg xtvw';       
             $mail->SMTPSecure = 'tls';                  
             $mail->Port = 587;
             $mail->setFrom('52200155@student.tdtu.edu.vn', 'Requirements Analysis and Design');

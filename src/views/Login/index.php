@@ -1,3 +1,17 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
+    include __DIR__ . '/../../models/connect.php';
+    include __DIR__ . '/../../models/user.php';
+    $a = checkUser($email,$pass);
+    if ($a == TRUE){
+        header('Location: /PTTKYC_WEB_FINAL/src/views/Home/index.php');
+    }else {
+        $txt_error = "Incorrect email or password.";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,12 +33,12 @@
                 <img src="/PTTKYC_WEB_FINAL/storage/Image/logo.png" alt="logo">
                 <span>Japan House</span>
             </div>
-            <form action="/PTTKYC_WEB_FINAL/src/php/login.php" method="post" class="form-login">
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" class="form-login">
                 <h1>Đăng Nhập</h1>
-                <input type="email" name="email_login" placeholder="Email" id="email">
+                <input type="email" name="email" placeholder="Email" id="email">
                 <p id="errorMessageEmail" class="errorMessage"></p>
                 <div class="password-input">
-                    <input type="password" name="password_login" placeholder="Mật khẩu" id="psw">
+                    <input type="password" name="password" placeholder="Mật khẩu" id="psw">
                     <!-- <i class="fa-solid fa-eye"></i> -->
                     <i class="fa-solid fa-eye-slash" id="eye-password-login"></i>
                 </div>
@@ -36,6 +50,11 @@
                     </div>
                     <a href="/PTTKYC_WEB_FINAL/src/views/ResetPassword/forgotten-pass.php">Quên mật khẩu</a>
                 </div>
+                <?php
+                    if(isset($txt_error) && $txt_error!=""){
+                        echo "<p style='color: red;padding-top:10px; padding-bottom: 10px;'>".$txt_error."</p>";
+                    }
+                ?>
                 <button class="btn-login" id="btn-login">Đăng nhập</button>
                 <div class="signup">
                     <span>Bạn mới biết đến chúng tôi?</span>
