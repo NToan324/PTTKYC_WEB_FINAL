@@ -1,3 +1,19 @@
+:root {
+    --primary-color: #416D19;
+    --secondary-color: #BFEA7C;
+    --tertiary-color: #EEF296;
+    --quaternary-color: #e2ffd6;
+    --quinary-color: #90D26D;
+    --senary-color: #BFEA7C;
+    --septenary-color: #416D19;
+    --octonary-color: #BFEA7C;
+    --nonary-color: #416D19;
+    --denary-color: #BFEA7C;
+    --timeanimation: 1.2s;
+    --timeanimation-second: 1.5s;
+    --timeanimation-tertiary: 1.7s;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -11,10 +27,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 0.9s ease-in-out;
 }
 
- /*Container*/
+/*Container*/
 .container {
     display: flex;
     flex-direction: column;
@@ -43,14 +58,16 @@ header {
 
 .header-logo h3 {
     margin-bottom: 30px;
+    animation: popup var(--timeanimation) ease-in-out;
+
 }
 
-.header-logo .logo{
+.header-logo .logo {
     width: 60px;
     height: 40px;
     object-fit: contain;
     margin-bottom: 30px;
-
+    animation: popup var(--timeanimation) ease-in-out;
 }
 
 header .header-search-navbar {
@@ -60,7 +77,7 @@ header .header-search-navbar {
     align-items: center;
 }
 
-.header-search-navbar nav{
+.header-search-navbar nav {
     margin-top: 10px;
     width: 100%;
 }
@@ -70,18 +87,24 @@ header .header-search-cart {
     justify-content: center;
     align-items: center;
 }
+
 .header-search-cart .search {
     position: relative;
     background: rgb(239, 237, 237);
     width: 500px;
     height: 50px;
     border-radius: 15px;
+    animation: collapseInput var(--timeanimation);
+
 }
+
 .header-search-cart .search i {
     position: absolute;
     left: 15px;
     top: 17px;
+    animation: slideRight 0.5s linear; /* Áp dụng animation */
 }
+
 .header-search-cart .search input {
     border: none;
     background: transparent;
@@ -89,7 +112,11 @@ header .header-search-cart {
     height: 50px;
     padding: 0 40px;
     border-radius: 15px;
+    animation: hideInput 1.2s;
+    animation-delay: 0.9s;
+    animation: slideRight 0.5s linear; /* Áp dụng animation */
 }
+
 .header-search-cart button {
     margin-left: 10px;
     width: 50px;
@@ -98,20 +125,26 @@ header .header-search-cart {
     border-radius: 15px;
     font-size: 1.2rem;
     text-align: center;
+    animation: popup 1.4s ease-in;
 }
-header nav ul{
+
+header nav ul {
     display: flex;
     justify-content: space-between;
     list-style-type: none;
 }
 
-header nav ul a{
+header nav ul a {
     text-decoration: none;
     font-size: 0.8rem;
     color: black;
 }
 
-header nav ul a:hover{
+header nav ul li {
+    animation: popup var(--timeanimation) ease-in-out;
+
+}
+header nav ul a:hover {
     color: #416D19;
 }
 
@@ -130,15 +163,18 @@ header nav ul a:hover{
     object-fit: contain;
     border-radius: 15px;
     font-weight: lighter;
+    animation: popup var(--timeanimation) ease-in-out;
 }
 
 .info-signout p {
     margin: 0 7px;
+    animation: popup var(--timeanimation) ease-in-out;
 }
 
 
 .info-signout i {
     cursor: pointer;
+    animation: popup var(--timeanimation) ease-in-out;
 }
 
 .overlay {
@@ -147,8 +183,10 @@ header nav ul a:hover{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Màu đen với độ mờ là 50% */
-    z-index: 999; /* Đảm bảo overlay hiển thị trên tất cả các phần tử khác */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Màu đen với độ mờ là 50% */
+    z-index: 999;
+    /* Đảm bảo overlay hiển thị trên tất cả các phần tử khác */
 }
 
 .logout-notification {
@@ -161,25 +199,33 @@ header nav ul a:hover{
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    z-index: 1000; /* Đảm bảo thông báo hiển thị trên overlay */
+    z-index: 1000;
+    /* Đảm bảo thông báo hiển thị trên overlay */
 }
 
 .logout-notification p {
     margin-bottom: 10px;
 }
 
-.logout-btn, .cancel-btn {
+.logout-btn,
+.cancel-btn {
     background-color: #416D19;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin: 0 5px; /* Tạo khoảng cách giữa các nút */
+    margin: 0 5px;
+    /* Tạo khoảng cách giữa các nút */
 }
 
-.logout-btn:hover, .cancel-btn:hover {
+.logout-btn:hover,
+.cancel-btn:hover {
     background-color: #2a4510;
+}
+
+.alert-signout {
+    display: none;
 }
 
 /* Container page 1 */
@@ -189,9 +235,6 @@ header nav ul a:hover{
     height: 33%;
 }
 
-.alert-signout {
-    display: none;
-}
 /* Container introduction */
 .container .container-introduction {
     position: relative;
@@ -205,11 +248,13 @@ header nav ul a:hover{
     display: inline;
     top: 0;
     line-height: 45px;
+    animation: slideUp 1s ease forwards;
 }
 
-.container .container-introduction .h1-intro-gradient{
+.container .container-introduction .h1-intro-gradient {
     background: linear-gradient(45deg, #BFEA7C, #416D19);
-    -webkit-background-clip: text; /* Áp dụng gradient vào văn bản */
+    -webkit-background-clip: text;
+    /* Áp dụng gradient vào văn bản */
     -webkit-text-fill-color: transparent;
 }
 
@@ -221,6 +266,7 @@ header nav ul a:hover{
     height: 170px;
     object-fit: cover;
     z-index: -1;
+    animation: slideUp 1s ease forwards;
 }
 
 .container-introduction .img-intro-left {
@@ -231,6 +277,8 @@ header nav ul a:hover{
     height: 100px;
     object-fit: cover;
     z-index: -1;
+    animation: slideUp 1s ease forwards;
+
 }
 
 .container-introduction .img-intro-right {
@@ -243,6 +291,8 @@ header nav ul a:hover{
     object-fit: cover;
     border-radius: 20px;
     z-index: -1;
+    animation: slideUp 1s ease forwards;
+
 }
 
 /*Containter description*/
@@ -266,16 +316,20 @@ header nav ul a:hover{
     background-color: #BFEA7C;
     padding: 20px 30px;
     color: white;
+    animation: popup var(--timeanimation) ease-in-out;
+    transform-origin: center bottom;
 }
 
 .cd-box1 .box1-rate {
     height: 20%;
 }
+
 .cd-box1 h3 {
     font-size: 2.6rem;
     margin: 30px 0;
 }
-.cd-box1 h3 p{
+
+.cd-box1 h3 p {
     font-size: 1.1rem;
 }
 
@@ -290,11 +344,13 @@ header nav ul a:hover{
     color: white;
     background-size: cover;
     mask-size: cover;
+    animation: popup var(--timeanimation-second) ease-in-out;
+    transform-origin: center bottom;
 }
 
 .cd-box2 .box2-child:first-child {
     background-color: #416D19;
-    background-image: url('/storage/Image/box2-top.jpg');
+    background-image: url('/PTTKYC_WEB_FINAL/storage/Image/box2-top.jpg');
     background-size: cover;
     width: 100%;
     border-radius: 40px;
@@ -305,9 +361,10 @@ header nav ul a:hover{
     display: flex;
     flex-direction: column;
 }
+
 .cd-box2 .box2-child:nth-child(2) {
     background-color: #416D19;
-    background-image: url('/storage/Image/box2-bot.jpg');
+    background-image: url('/PTTKYC_WEB_FINAL/storage/Image/box2-bot.jpg');
     background-size: cover;
     width: 100%;
     border-radius: 40px;
@@ -327,7 +384,10 @@ header nav ul a:hover{
     color: rgb(255, 255, 255);
     font-weight: 500;
     text-align: center;
+    animation: popup var(--timeanimation-tertiary) ease-in-out;
+    transform-origin: center bottom;
 }
+
 .box3-child-circle {
     position: relative;
     display: flex;
@@ -357,6 +417,8 @@ header nav ul a:hover{
     padding: 20px 30px;
     color: rgb(0, 0, 0);
     text-align: center;
+    animation: popup var(--timeanimation-second) ease-in-out;
+    transform-origin: center bottom;
 }
 
 .cd-box4::before {
@@ -393,9 +455,11 @@ header nav ul a:hover{
     padding: 20px 30px;
     color: white;
     font-size: 1.2rem;
+    animation: popup var(--timeanimation) ease-in-out;
+    transform-origin: center bottom;
 }
 
-.cd-box5 .details  {
+.cd-box5 .details {
     position: relative;
     border-top: 2px solid white;
     padding: 10px;
@@ -405,7 +469,7 @@ header nav ul a:hover{
     font-size: 1rem;
 }
 
-.cd-box5  .details a{
+.cd-box5 .details a {
     position: absolute;
     color: black;
     background-color: white;
@@ -424,6 +488,9 @@ header nav ul a:hover{
     text-align: center;
     padding: 15px 10px;
     border-radius: 20px;
+    animation: slideUp var(--timeanimation) ease forwards;
+    animation: popup var(--timeanimation) ease-in-out;
+    transform-origin: center bottom;
 }
 
 .cd-box6 a {
@@ -455,19 +522,23 @@ header nav ul a:hover{
     width: 100%;
     height: 100%;
 }
+
 .container-product-header {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
+
 .container-product-header .title {
     font-size: 2.6rem;
     font-weight: bold;
+    animation: popLeft var(--timeanimation) ease-in-out;
 }
 
 .container-product-header p {
     font-size: 1.1rem;
     font-weight: 500;
+    animation: popRight var(--timeanimation) ease-in-out;
 }
 
 .cp-box {
@@ -481,6 +552,7 @@ header nav ul a:hover{
     flex-direction: column;
     width: 40%;
 }
+
 .cp-box-child-1 {
     position: relative;
     flex-direction: column;
@@ -493,21 +565,25 @@ header nav ul a:hover{
     background-image: linear-gradient(45deg, #EEF296, #e2ffd6);
     font-weight: bold;
     font-size: 1.3rem;
+    animation: popLeft var(--timeanimation) ease-in-out;
 }
 
 .btn-view-cp {
     background-color: white;
     margin-top: 10px;
     width: 150px;
-    padding:15px 20px;
+    padding: 15px 20px;
     font-size: 1rem;
     text-align: center;
     border-radius: 20px;
 }
+
 .btn-view-cp a {
     color: black;
     text-decoration: none;
-}   
+}
+
+
 .cp-box-child-1 img {
     position: absolute;
     width: 300px;
@@ -532,22 +608,29 @@ header nav ul a:hover{
     padding-left: 40px;
     color: rgb(0, 0, 0);
     box-shadow: 10px 10px 10px 0 rgba(131, 131, 131, 0.5);
+    animation: popLeft var(--timeanimation-second) ease-in-out;
 }
 
 .btn-view-cp {
     background-color: white;
     margin-top: 10px;
     width: 150px;
-    padding:15px 20px;
+    padding: 15px 20px;
     font-size: 1rem;
     text-align: center;
     border-radius: 20px;
 }
+
 .btn-buy-cp a {
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 1rem;
-}   
+}
+
+.btn-buy-cp:hover a {
+    color: var(--nonary-color);
+}
+
 .cp-box-child-2 img {
     position: absolute;
     width: 170px;
@@ -567,6 +650,7 @@ header nav ul a:hover{
     font-weight: bold;
     font-size: 0.9rem;
     color: rgb(0, 0, 0);
+    animation: popLeft var(--timeanimation-tertiary) ease-in-out;
 }
 
 .show-product-cp {
@@ -592,10 +676,14 @@ header nav ul a:hover{
     padding: 10px 30px;
 }
 
-.info-product-cp .name-product a{
+.info-product-cp .name-product a {
     text-decoration: none;
     color: black;
     font-weight: 300;
+}
+
+.name-product:hover a {
+    color: var(--primary-color);
 }
 
 .info-product-cp .price-product {
@@ -606,7 +694,7 @@ header nav ul a:hover{
     align-items: center;
     text-align: center;
     width: 80px;
-    padding:0 20px;
+    padding: 0 20px;
     border-radius: 20px;
     font-size: 0.8rem;
 }
@@ -660,13 +748,16 @@ header nav ul a:hover{
     border-radius: 40px;
     background-color: white;
 }
+
 .cp-box-child-right-1 .show-product-cp {
     border: 1px solid #d9d9d9;
     border-radius: 40px;
     width: 400px;
     box-shadow: 10px 10px 10px 0 rgba(131, 131, 131, 0.5);
     font-weight: bold;
+    animation: popup var(--timeanimation) ease-in-out;
 }
+
 .cp-box-child-right-1 img {
     width: 250px;
     height: 250px;
@@ -687,6 +778,8 @@ header nav ul a:hover{
     font-weight: bolder;
     font-size: 1.4rem;
     padding: 20px;
+    animation: popup var(--timeanimation) ease-in-out;
+
 }
 
 .btn-buy-right-cp a {
@@ -696,11 +789,95 @@ header nav ul a:hover{
     font-size: 1rem;
 }
 
- .cp-box-child-right-2 img {
+.btn-buy-right-cp:hover a {
+    color: var(--primary-color);
+
+}
+.cp-box-child-right-2 img {
     position: absolute;
     width: 200px;
     height: 200px;
     object-fit: contain;
     right: 170px;
-    top: 70px;    
- }
+    top: 70px;
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes popLeft {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+
+@keyframes popRight {
+    0% {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes collapseInput {
+    0% {
+        width: calc(100% - 500px);
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes slideRight {
+    0% {
+         transform: translateX(-20px); 
+         opacity: 0;
+    } /* Bắt đầu từ vị trí bên trái ngoài */
+    100% { 
+        transform: translateX(0); 
+        opacity: 1;
+    } /* Di chuyển đến vị trí bên phải ngoài */
+  }
+
+  @keyframes hideInput {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+    
+  }
+
+  @keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

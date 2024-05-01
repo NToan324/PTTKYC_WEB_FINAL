@@ -31,7 +31,7 @@
                 <nav>
                     <ul>
                         <li><a href="/PTTKYC_WEB_FINAL/src/views/Home/index.php">Trang chủ</a></li>
-                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="/PTTKYC_WEB_FINAL/src/views/Product/index.php">Sản phẩm</a></li>
                         <li><a href="#">Giảm giá</a></li>
                         <li><a href="#">Yêu thích</a></li>
                         <li><a href="#">Xem gần đây</a></li>

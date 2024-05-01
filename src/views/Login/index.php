@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
     if ($a == TRUE){
         header('Location: /PTTKYC_WEB_FINAL/src/views/Home/index.php');
     }else {
-        $txt_error = "Incorrect email or password.";
+        $txt_error = "Sai mật khẩu hoặc tài khoản không tồn tại";
     }
 }
 ?>
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
                 </div>
                 <?php
                     if(isset($txt_error) && $txt_error!=""){
-                        echo "<p style='color: red;padding-top:10px; padding-bottom: 10px;'>".$txt_error."</p>";
+                        echo "<p style='color: red;padding-top:10px'>".$txt_error."</p>";
                     }
                 ?>
                 <button class="btn-login" id="btn-login">Đăng nhập</button>
