@@ -89,14 +89,42 @@ header .header-search-cart {
     padding: 0 40px;
     border-radius: 15px;
 }
-.header-search-cart button {
+
+.cart-quantity {
+    position: relative;
+}
+
+.cart-quantity span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #9BCF53;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+    right: -10px;
+    top: -10px;
+    color: white;
+}
+
+.cart-quantity i {
     margin-left: 10px;
     width: 50px;
     height: 50px;
     border: none;
     border-radius: 15px;
     font-size: 1.2rem;
-    text-align: center;
+    background-color: #e4e4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-quantity a {
+    text-decoration: none;
+    color: #9BCF53;
 }
 header nav ul{
     display: flex;
@@ -393,19 +421,22 @@ header nav ul a:hover{
 }
 
 .buy-item {
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
 }
-
-.buy-item a {
+.buy-item form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+}
+.buy-item input {
     text-decoration: none;
     color: #000;
     border: 1px solid #000;
-    padding: 5px;
+    padding: 10px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .buy-item .add-to-cart {

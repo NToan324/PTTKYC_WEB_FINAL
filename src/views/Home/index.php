@@ -26,7 +26,10 @@
                         <input type="text" placeholder="Bạn muốn tìm gì ...">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    <div class="cart-quantity">
+                        <a href="/PTTKYC_WEB_FINAL/src/views/Cart/index.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <span class="quantity">0</span>
+                    </div>
                 </div>
                 <nav>
                     <ul>

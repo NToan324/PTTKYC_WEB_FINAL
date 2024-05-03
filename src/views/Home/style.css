@@ -98,6 +98,25 @@ header .header-search-cart {
 
 }
 
+.cart-quantity {
+    position: relative;
+}
+
+.cart-quantity span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: #9BCF53;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+    right: -10px;
+    top: -10px;
+    color: white;
+}
+
 .header-search-cart .search i {
     position: absolute;
     left: 15px;
@@ -117,15 +136,22 @@ header .header-search-cart {
     animation: slideRight 0.5s linear; /* Áp dụng animation */
 }
 
-.header-search-cart button {
+.cart-quantity i {
     margin-left: 10px;
     width: 50px;
     height: 50px;
     border: none;
     border-radius: 15px;
     font-size: 1.2rem;
-    text-align: center;
-    animation: popup 1.4s ease-in;
+    background-color: #e4e4e4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-quantity a {
+    text-decoration: none;
+    color: #9BCF53;
 }
 
 header nav ul {

@@ -12,7 +12,6 @@ $listProduct = getProduct();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Product</title>
 </head>
@@ -30,12 +29,15 @@ $listProduct = getProduct();
                         <input type="text" placeholder="Bạn muốn tìm gì ...">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <button><i class="fa-solid fa-cart-shopping"></i></button>
+                    <div class="cart-quantity">
+                        <a href="/PTTKYC_WEB_FINAL/src/views/Cart/index.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                        <span class="quantity">0</span>
+                    </div>
                 </div>
                 <nav>
                     <ul>
                         <li><a href="/PTTKYC_WEB_FINAL/src/views/Home/index.php">Trang chủ</a></li>
-                        <li><a href="#">Sản phẩm</a></li>
+                        <li><a href="/PTTKYC_WEB_FINAL/src/views/Product/index.php">Sản phẩm</a></li>
                         <li><a href="#">Giảm giá</a></li>
                         <li><a href="#">Yêu thích</a></li>
                         <li><a href="#">Xem gần đây</a></li>
@@ -54,7 +56,7 @@ $listProduct = getProduct();
                         <button class="cancel-btn" id="cancel-signout">Hủy</button>
                     </div>
                 </div>
-
+                
             </div>
         </header>
         <div class="container-advertise">
@@ -181,8 +183,14 @@ $listProduct = getProduct();
                     <p>499.000đ</p>
                 </div>
                 <div class="buy-item">
-                    <a href="#" class="add-to-cart">Thêm</a>
-                    <a href="#" class="buy">Mua ngay</a>
+                    <form action="/PTTKYC_WEB_FINAL/src/models/addcart.php" method="post">
+                        <input type="hidden" name="id" value="<?php echo $product['id'];?>">
+                        <input type="hidden" name="title" value="<?php echo $product['title'];?>">
+                        <input type="hidden" name="thumbnail" value="<?php echo $product['thumbnail'];?>">
+                        <input type="hidden" name="price" value="<?php echo $product['price'];?>">
+                        <input type="submit" name="addtocart" value="Thêm" class="add-to-cart">
+                        <input type="submit" name="buy" value="Mua ngay" class="buy">
+                    </form>
                 </div>
             </div>
             <?php endforeach; ?>
