@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/../../models/addcart.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +29,17 @@
                     </div>
                     <div class="cart-quantity">
                         <a href="/PTTKYC_WEB_FINAL/src/views/Cart/index.php"><i class="fa-solid fa-cart-shopping"></i></a>
-                        <span class="quantity">0</span>
+                        <span class="quantity"><?php
+                        if (isset($_SESSION['cart'])) {
+                            $count = 0;
+                            foreach ($_SESSION['cart'] as $product) {
+                                $count += $product['quantity'];
+                            }
+                            echo $count;
+                        } else {
+                            echo 0;
+                        }
+                        ?></span>
                     </div>
                 </div>
                 <nav>

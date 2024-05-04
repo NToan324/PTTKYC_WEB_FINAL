@@ -1,4 +1,5 @@
 <?php include __DIR__ . '/../../models/addcart.php';
+$totalCost = 0; //Calculate total cost of all products in cart
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -31,7 +33,17 @@
                     <div class="cart-quantity">
                         <a href="/PTTKYC_WEB_FINAL/src/views/Cart/index.php"><i
                                 class="fa-solid fa-cart-shopping"></i></a>
-                        <span class="quantity">0</span>
+                                <span class="quantity"><?php
+                        if (isset($_SESSION['cart'])) {
+                            $count = 0;
+                            foreach ($_SESSION['cart'] as $product) {
+                                $count += $product['quantity'];
+                            }
+                            echo $count;
+                        } else {
+                            echo 0;
+                        }
+                        ?></span>
                     </div>
                 </div>
                 <nav>
@@ -61,23 +73,26 @@
         </header>
         <div class="container-title-cart">
             <p>Giỏ hàng</p>
-            <a href="/PTTKYC_WEB_FINAL/src/views/Product/index.php" class="back-to-shopping">
+            <a href="/PTTKYC_WEB_FINAL/src/views/Product/index.php" class="back-to-shopping" id="back-to-shopping">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Quay lại mua sắm</span>
             </a>
         </div>
-        <div class="container-product-cart">
-            <table>
-                <tr>
-                    <th>Sản phẩm</th>
-                    <th>Giá</th>
-                    <th>Số lượng</th>
-                    <th>Thành tiền</th>
-                    <th>Xóa</th>
-                </tr>
-                <?php
-                if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+        <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) { ?>
+            <div class="container-product-cart">
+                <table>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                        <th>Xóa</th>
+                    </tr>
+                    <?php
+                    $i = 0;
                     foreach ($_SESSION['cart'] as $sp):
+                        $cost = $sp['price'] * $sp['quantity'];
+                        $totalCost += $cost;
                         ?>
                         <tr>
                             <td>
@@ -86,8 +101,8 @@
                                         <img src="<?php echo $sp['thumbnail'] ?>" alt="product">
                                     </div>
                                     <div class="product-info">
-                                        <p class="name-product"><?php echo $sp['title'];?></p>
-                                        <p class="id-product">#<?php echo $sp['id'];?></p>
+                                        <p class="name-product"><?php echo $sp['title']; ?></p>
+                                        <p class="id-product">#<?php echo $sp['id']; ?></p>
                                         <p class="color-product">Màu sắc: Xanh lá</p>
                                         <p class="size-product">Kích cỡ: M</p>
                                     </div>
@@ -96,63 +111,82 @@
                             <td>
                                 <div class="price-component">
                                     <p class="price-product"><?php echo $sp['price']; ?>đ</p>
-                                    <p class="shipping-product">Free Ship</p>
-                                    <p class="voucher-product">Giảm giá: 20.000đ</p>
+                                    <p class="shipping-product" id='price-shipping'>Giao hàng: 25000đ</p>
+                                    <p class="voucher-product">Giảm giá: Không</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="quantity">
+                                    <input type="hidden" value="<?php echo $sp['id']; ?>" class="procId">
                                     <button class="decrease">-</button>
-                                    <input type="text" value="<?php echo $sp['quantity'];?>">
+                                    <input type="text" value="<?php echo $sp['quantity']; ?>">
                                     <button class="increase">+</button>
                                 </div>
                             </td>
-                            <td class="total-product">180.000đ</td>
+                            <td class="total-product"><?php echo $cost . 'đ'; ?></td>
                             <td>
-                                <i class="fa-solid fa-trash delete-product"
-                                    data-product-id="<?php echo $sp['id'];?>"></i>
+                                <a href="/PTTKYC_WEB_FINAL/src/models/delcart.php?id=<?php echo $i; ?>">
+                                    <i class="fa-solid fa-trash delete-product"></i>
+                                </a>
+
                             </td>
                         </tr>
                         <?php
+                        $i++;
                     endforeach;
-                }
-                ; ?>
-            </table>
-        </div>
-        <div class="container-shipping-mode">
-            <div class="shipping-mode">
-                <p>Chọn hình thức giao hàng</p>
-                <div class="shipping-mode-option">
-                    <div class="shipping-mode-item">
-                        <input type="radio" name="shipping-mode" id="normal" checked>
-                        <label for="normal">Giao hàng tiêu chuẩn (2 - 4 ngày)</label>
+                    ; ?>
+                </table>
+            </div>
+            <div class="container-shipping-mode">
+                <div class="shipping-mode">
+                    <p>Chọn hình thức giao hàng</p>
+                    <div class="shipping-mode-option">
+                        <div class="shipping-mode-item">
+                            <input type="radio" name="shipping-mode" id="normal" checked>
+                            <label for="normal">Giao hàng tiêu chuẩn (2 - 4 ngày)</label>
+                        </div>
+                        <div class="shipping-mode-item">
+                            <input type="radio" name="shipping-mode" id="fast">
+                            <label for="fast">Giao hàng nhanh (1 - 3 ngày)</label>
+                        </div>
                     </div>
-                    <div class="shipping-mode-item">
-                        <input type="radio" name="shipping-mode" id="fast">
-                        <label for="fast">Giao hàng nhanh (1 - 3 ngày)</label>
+                </div>
+                <div class="total-price-shipping">
+                    <div class="total-price">
+                        <p>Tổng tiền hàng</p>
+                        <p><?php echo $totalCost . 'đ'; ?></p>
                     </div>
+                    <div class="shipping-price">
+                        <p>Phí vận chuyển</p>
+                        <p id="shipping-cost">25000đ</p>
+                    </div>
+                    <div class="total-price">
+                        <p>Tổng tiền thanh toán</p>
+                        <p><?php echo $totalCost;
+                        echo 'đ'; ?></p>
+                    </div>
+                    <button>
+                        <span>Tiến hành thanh toán</span>
+                    </button>
                 </div>
             </div>
-            <div class="total-price-shipping">
-                <div class="total-price">
-                    <p>Tổng tiền hàng</p>
-                    <p>679.000đ</p>
-                </div>
-                <div class="shipping-price">
-                    <p>Phí vận chuyển</p>
-                    <p>Free</p>
-                </div>
-                <div class="total-price">
-                    <p>Tổng tiền thanh toán</p>
-                    <p>679.000đ</p>
-                </div>
-                <button>
-                    <span>Tiến hành thanh toán</span>
-                </button>
-            </div>
         </div>
-    </div>
+
+        <?php
+        } else {
+            echo "<div class = 'empty-cart'>
+                <img src='/PTTKYC_WEB_FINAL/storage/Image_Product/emptycart.png' alt='empty-cart'>
+                <p>Ohhh... Giỏ hàng của bạn đang rỗng <br> Nhưng đừng lo hãy nhấp vào</p>
+                <a href='/PTTKYC_WEB_FINAL/src/views/Product/index.php'>Mua sắm ngay</a>
+            </div>";
+            echo "<script>
+            document.getElementById('back-to-shopping').style.display = 'none';
+            </script>";
+        }
+        ?>
+
     <script src="script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
 
 </body>
 
@@ -163,7 +197,6 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['deletedId'])) {
     // Nhận ID sản phẩm đã xóa từ request
     $deletedId = $_POST['deletedId'];
-
     // Thực hiện xóa sản phẩm có ID là $deletedId khỏi giỏ hàng trong session
     if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
         foreach ($_SESSION['cart'] as $key => $product) {

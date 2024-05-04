@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_POST["addtocart"]) && ($_POST["addtocart"])) {
+if (isset($_POST["addtocart"]) && ($_POST["addtocart"])) {
     $id = $_POST["id"];
     $title = $_POST["title"];
     $thumbnail = $_POST["thumbnail"];
@@ -13,7 +13,7 @@ if(isset($_POST["addtocart"]) && ($_POST["addtocart"])) {
         "quantity" => 1
     );
 
-    if(!isset($_SESSION['cart'])) {
+    if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array();
     }
 
@@ -27,13 +27,42 @@ if(isset($_POST["addtocart"]) && ($_POST["addtocart"])) {
             break;
         }
     }
-
-    // Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm sản phẩm mới
     if (!$product_exists) {
         $_SESSION['cart'][] = $sp;
     }
 
+
+    $flag = false;
+    if (isset($_POST['productIncDec'])) {
+        $procId = $_POST['product_id'];
+        $quantity = $_POST['quantity'];
+        foreach ($_SESSION['cart'] as &$product) {
+            if ($product['id'] == $procId) {
+                $flag = true;
+                $product['quantity'] = $quantity;
+            }
+        }
+
+        if ($flag) {
+            $response = [
+                'status' => 200,
+                'status_type' => 'success',
+                'message' => 'Quantity updated successfully'
+            ];
+            echo json_encode($response);
+            return;
+        } else {
+            $response = [
+                'status' => 500,
+                'status_type' => 'error',
+                'message' => 'Quantity update failed'
+            ];
+            echo json_encode($response);
+            return;
+        }
+    }
+
+    // Đảm bảo không có dòng code nào được gọi sau header
     header('Location: /PTTKYC_WEB_FINAL/src/views/Product/index.php');
-    exit();
 }
 ?>

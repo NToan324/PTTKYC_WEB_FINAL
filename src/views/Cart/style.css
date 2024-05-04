@@ -468,6 +468,12 @@ input:focus {
     font-weight: bold;
 }
 
+a {
+    text-decoration: none;
+    color: #000000;
+
+}
+
 .total-price-shipping button {
     background-color: #5b9129;
     border-radius: 20px;
@@ -480,4 +486,33 @@ input:focus {
 .total-price-shipping button:hover {
     background-color: var(--primary-color);
     cursor: pointer;
+}
+
+
+.empty-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+}
+.empty-cart img {
+    width: 300px;
+    height: 300px;
+}
+
+.empty-cart a {
+    margin-top: 10px;
+    text-decoration: none;
+    width: 150px;
+    padding: 10px;
+    background-color: var(--quinary-color);
+    color: #000;
+    border-radius: 20px;
+    font-weight: lighter;
+}
+
+.empty-cart a:hover {
+    background-color: var(--senary-color);
 }

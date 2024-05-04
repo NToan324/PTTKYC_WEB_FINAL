@@ -326,7 +326,6 @@ header nav ul a:hover{
     left: 0;
     top: 32px;
     z-index: 1000;
-    box-shadow: 10px 10px 40px 0 rgb(138, 138, 138);
 }
 
 .classify ul li {
@@ -403,13 +402,21 @@ header nav ul a:hover{
 
 }
 .description-item {
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
+    height: 150px;
     justify-content: space-around;
 }
 
 .info-item h4 {
     font-weight: bolder;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
 }
 
 .description-item{
@@ -428,7 +435,6 @@ header nav ul a:hover{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 0 20px;
 }
 .buy-item input {
     text-decoration: none;
@@ -448,4 +454,5 @@ header nav ul a:hover{
     background-color: #9bcf53;
     width: 100px;
     text-align: center;
+    margin-right: 120px;
 }
