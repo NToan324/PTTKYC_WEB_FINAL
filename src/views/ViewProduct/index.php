@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/../../models/viewdetailsproduct.php';
+include __DIR__ . '/../../models/addcart.php';
 $listthumbnail = getthumbnails();
 ?>
 
@@ -125,7 +126,7 @@ $listthumbnail = getthumbnails();
                         <input type="hidden" name="title" value="<?php echo $product['title'];?>">
                         <input type="hidden" name="thumbnail" value="<?php echo $product['thumbnail'];?>">
                         <input type="hidden" name="price" value="<?php echo  number_format($product['price'], '0', ',','.');?>">
-                        <button type="submit" name="addtocart" value="Thêm giỏ hàng" class="btn-add">Thêm sản phẩm</button>
+                        <button type="submit" name="addtocartView" value="Thêm giỏ hàng" class="btn-add">Thêm sản phẩm</button>
                     </form>
                 </div>
             </div>

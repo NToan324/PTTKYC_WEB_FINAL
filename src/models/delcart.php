@@ -12,7 +12,7 @@ if (isset($_SESSION['cart'])) {
     if (count($_SESSION['cart']) > 0) {
         header('Location: /PTTKYC_WEB_FINAL/src/views/Cart/index.php');
     } else {
-        header('Location: /PTTKYC_WEB_FINAL/src/views/Product/index.php');
+        header('Location: /PTTKYC_WEB_FINAL/src/views/Cart/index.php');
     }
 }
 ?>
