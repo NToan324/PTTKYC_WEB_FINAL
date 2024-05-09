@@ -33,7 +33,7 @@ $totalCost = 0; //Calculate total cost of all products in cart
                     <div class="cart-quantity">
                         <a href="/PTTKYC_WEB_FINAL/src/views/Cart/index.php"><i
                                 class="fa-solid fa-cart-shopping"></i></a>
-                                <span class="quantity"><?php
+                        <span class="quantity"><?php
                         if (isset($_SESSION['cart'])) {
                             $count = 0;
                             foreach ($_SESSION['cart'] as $product) {
@@ -90,6 +90,7 @@ $totalCost = 0; //Calculate total cost of all products in cart
                     </tr>
                     <?php
                     $i = 0;
+                    $costArray = [];
                     foreach ($_SESSION['cart'] as $sp):
                         $cost = $sp['price'] * ($sp['quantity'] * 1000);
                         $totalCost += $cost;
@@ -123,7 +124,14 @@ $totalCost = 0; //Calculate total cost of all products in cart
                                     <button class="increase">+</button>
                                 </div>
                             </td>
-                            <td class="total-product"><?php echo number_format($cost, '0',',','.'). 'đ'; ?></td>
+                            <!-- Cập nhật lại số tiền khi tăng số lượng sản phẩm -->
+                            <td class="total-product"><?php echo number_format($cost, '0', ',', '.') . 'đ'; ?>
+                                <input type="hidden" value="<?php echo $id; ?>">
+                            </td>
+                            <?php
+                            $costArray[] = ["cost" => $sp['price'], "quantity" => $sp['quantity'], "id" => $sp['id']];
+                            $json = json_encode($costArray);
+                            ?>
                             <td>
                                 <a href="/PTTKYC_WEB_FINAL/src/models/delcart.php?id=<?php echo $i; ?>">
                                     <i class="fa-solid fa-trash delete-product"></i>
@@ -154,7 +162,7 @@ $totalCost = 0; //Calculate total cost of all products in cart
                 <div class="total-price-shipping">
                     <div class="total-price">
                         <p>Tổng tiền hàng</p>
-                        <p><?php echo number_format($totalCost, '0',',','.'). 'đ'; ?></p>
+                        <p id="cost-proc"><?php echo number_format($totalCost, '0', ',', '.') . 'đ'; ?></p>
                     </div>
                     <div class="shipping-price">
                         <p>Phí vận chuyển</p>
@@ -162,9 +170,9 @@ $totalCost = 0; //Calculate total cost of all products in cart
                     </div>
                     <div class="total-price">
                         <p>Tổng tiền thanh toán</p>
-                        <p><?php 
-                            $totalCost += 25000;
-                            echo number_format($totalCost, '0',',','.').'đ';
+                        <p id="cost-ship-proc"><?php
+                        $totalCost += 25000;
+                        echo number_format($totalCost, '0', ',', '.') . 'đ';
                         ?></p>
                     </div>
                     <button>
@@ -187,6 +195,9 @@ $totalCost = 0; //Calculate total cost of all products in cart
         }
         ?>
 
+    <script>
+        var costArray = <?= $json ?>;
+    </script>
     <script src="script.js"></script>
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
 

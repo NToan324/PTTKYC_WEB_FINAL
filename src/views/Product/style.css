@@ -451,19 +451,29 @@ header nav ul a:hover{
 .buy-item input {
     text-decoration: none;
     color: #000;
-    border: 1px solid #000;
+    border: none;
     padding: 15px;
     border-radius: 15px;
-    cursor: pointer;;
+    cursor: pointer;
+    color: #fff;
 }
 
 .buy-item .add-to-cart {
     width: 70px;
     text-align: center;
+    color: #000000;
 }
 
 .buy-item .buy {
-    background-color: #9bcf53;
+    background-color: #689925;
     width: 80%;
     text-align: center;
+}
+
+.buy-item .buy:hover {
+    background-color: #416D19;
+}
+
+.buy-item .add-to-cart:hover {
+    background-color: #e2e2e2;
 }

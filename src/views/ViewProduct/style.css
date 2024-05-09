@@ -344,6 +344,9 @@ header nav ul a:hover{
     font-size: 0.9rem;
 }
 
+.description #content {
+    width: 470px;
+}
 
 .quantity-add {
     display: flex;

@@ -15,18 +15,7 @@ document.getElementById('icon-down').addEventListener('click', function () {
     }
 });
 
-
-//Increase and decrease quantity
-document.querySelectorAll('.increase').forEach(function (button) {
-    button.addEventListener('click', function () {
-        var quantityInput = button.parentNode.querySelector('input[type="text"]');
-        var procId = button.parentNode.querySelector('input[type="hidden"]').value;
-        var currentValue = parseInt(quantityInput.value);
-        currentValue++;
-        quantityInput.value = currentValue;
-        quantityIncDec(procId, currentValue);
-    });
-});
+//Increase and decrease quantity of product
 
 document.querySelectorAll('.decrease').forEach(function (button) {
     button.addEventListener('click', function () {
@@ -36,62 +25,70 @@ document.querySelectorAll('.decrease').forEach(function (button) {
         if (currentValue > 1) {
             currentValue--;
             quantityInput.value = currentValue;
-            quantityIncDec(procId, currentValue);
+            CalculateCost(procId, currentValue);
         }
     });
 });
 
-function quantityIncDec(id, qty) {
-    console.log(id, qty);
-    $.ajax({
-        type: "POST",
-        url: "/PTTKYC_WEB_FINAL/src/models/addcart.php",
-        contentType: "application/json",
-        data : {
-            'productIncDec': true,
-            'product_id': id,
-            'quantity': qty
-        },
-        success: function (response) {
-            console.log(response); // Kiểm tra phản hồi từ server
-            if (response.trim() !== "") { // Kiểm tra xem chuỗi phản hồi có rỗng không
-                try {
-                    var res = JSON.parse(response);
-                    if(res.status == 200) {
-                        window.location.reload();
-                        alertify.success(res.message);
-                    } else {
-                        alertify.error(res.message);
-                    }
-                } catch (e) {
-                    console.error("Parsing error:", e);
-                    // Xử lý lỗi phân tích JSON ở đây
+document.querySelectorAll('.increase').forEach(function (button) {
+    button.addEventListener('click', function () {
+        var quantityInput = button.parentNode.querySelector('input[type="text"]');
+        var procId = button.parentNode.querySelector('input[type="hidden"]').value;
+        var currentValue = parseInt(quantityInput.value);
+        currentValue++;
+        quantityInput.value = currentValue;
+        CalculateCost(procId, currentValue);
+    });
+});
+
+function CalculateCost(procId, currentValue) {
+    document.querySelectorAll('.total-product').forEach(function (total) {
+        if (procId == total.parentElement.querySelector('input[type="hidden"]').value) {
+            costArray.forEach(function (item) {
+                if (procId == item['id']) {
+                    total.innerHTML = (item['cost'] * currentValue * 1000).toLocaleString('vi', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).replace('₫', 'đ');
+
+                    var totalCost = 0;
+                    document.querySelectorAll('.total-product').forEach(function (cost) {
+                        totalCost += parseInt(cost.innerHTML.replace('đ', '').replace(/\./g, ''));
+                    });
+
+                    //Thay đổi tổng tiền hàng
+                    document.getElementById('cost-proc').innerText = totalCost.toLocaleString('vi', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).replace('₫', 'đ');
+                    document.getElementById('cost-ship-proc').innerText = (totalCost + 25000).toLocaleString('vi', {
+                        style: 'currency',
+                        currency: 'VND'
+                    }).replace('₫', 'đ');
                 }
-            } else {
-                console.error("Empty response from server");
-                // Xử lý trường hợp phản hồi rỗng ở đây
-            }
+            });
         }
     });
 }
-
 
 //Choose method of shipping
-function paymentShipping(cost) {
-    document.querySelectorAll('.shipping-product').forEach(function (element) {
-        element.innerHTML = 'Giao hàng: ' + cost + 'đ';
-    }); 
-    document.getElementById('shipping-cost').innerHTML = cost + 'đ';
+function paymentShipping(id, cost) {
+    var id = document.getElementById(id);
+    id.addEventListener('click', function () {
+        if (id.checked) {
+            document.querySelectorAll('.shipping-product').forEach(function (element) {
+                element.innerHTML = 'Giao hàng: ' + cost + 'đ';
+            });
+            document.getElementById('shipping-cost').innerHTML = cost + 'đ';
+            var totalCost = document.getElementById('cost-proc').innerText.replace(/[^\d]/g, '');
+            totalCost = (parseInt(totalCost) + parseInt(cost)).toLocaleString('vi', {
+                style: 'currency',
+                currency: 'VND'
+            }).replace('₫', 'đ');
+            document.getElementById('cost-ship-proc').innerText = totalCost;
+        }
+    });
 }
+paymentShipping('normal', '25000');
+paymentShipping('fast', '35000');
 
-document.getElementById('normal').addEventListener('click', function () {
-    if (document.getElementById('normal').checked) {
-        paymentShipping('25000');
-    }
-});
-
-document.getElementById('fast').addEventListener('click', function () {
-    if (document.getElementById('fast').checked) {
-        paymentShipping('35000');
-    }
-});
