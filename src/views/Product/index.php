@@ -179,10 +179,10 @@ $listProduct = getProduct();
                 <div class="frame-img">
                     <img src="<?php echo $product['thumbnail'];?>" alt="">
                 </div>
-                <div class="description-item">
+                <a href="/PTTKYC_WEB_FINAL/src/views/ViewProduct/index.php?id=<?php echo $product['id']?>" class="description-item">
                     <div class="info-item">
                         <p class="name-item"><?php echo $product['title'];?></p>
-                        <p><?php echo $product['description'];?></p>
+                        <p><?php echo $product['descriptionShort'];?></p>
                         <div class="rate">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -191,16 +191,16 @@ $listProduct = getProduct();
                             <i class="fa-solid fa-star"></i>
                         </div>
                     </div>
-                    <p>499.000đ</p>
-                </div>
+                    <p><?php echo number_format($product['price'], '0', ',','.');?>đ</p>
+                </a>
                 <div class="buy-item">
                     <form action="/PTTKYC_WEB_FINAL/src/models/addcart.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $product['id'];?>">
                         <input type="hidden" name="title" value="<?php echo $product['title'];?>">
                         <input type="hidden" name="thumbnail" value="<?php echo $product['thumbnail'];?>">
-                        <input type="hidden" name="price" value="<?php echo $product['price'];?>">
-                        <input type="submit" name="addtocart" value="Thêm" class="add-to-cart">
+                        <input type="hidden" name="price" value="<?php echo  number_format($product['price'], '0', ',','.');?>">
                         <input type="submit" name="buy" value="Mua ngay" class="buy">
+                        <input type="submit" name="addtocart" value="Thêm" class="add-to-cart">
                     </form>
                 </div>
             </div>

@@ -41,7 +41,7 @@
                             echo "<p style='color: red; padding-bottom: 10px;'>".$txt_error."</p>";
                         }
                     ?>
-                    <input type="submit" name="check" value="Continue" style="background:#512da8;color:#fff">
+                    <input type="submit" name="check" value="Continue" style="background:#9BCF53;color:#fff">
                 </div>
             </form>
         </div>

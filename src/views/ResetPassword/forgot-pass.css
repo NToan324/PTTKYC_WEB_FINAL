@@ -8,16 +8,16 @@
 
 h1 {
     margin-bottom: 70px;
-    color: #11057c;
+    color: #5d822a;
 }
 
 h2 {
-    color: #5933b0;
+    color: #9BCF53;
 }
 
 body{
     background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    background: linear-gradient(to right, #c5ee8b, #e0ffb4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,14 +71,14 @@ body{
 }
 
 .container a{
-    color: #4c2b99;
+    color: #9ad24c;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
 .container button{
-    background-color: #512da8;
+    background-color: #55722c;
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
