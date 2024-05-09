@@ -270,7 +270,11 @@ header nav ul a:hover{
 .name-rate {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
+}
+
+.name-rate h2 {
+    width: 60%;
 }
 .product-price, .choose-color p {
     font-weight: bold;
